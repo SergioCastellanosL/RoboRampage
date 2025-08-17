@@ -22,7 +22,6 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		print(get_gravity().y)
 		velocity.y = sqrt(jump_height*2.0*-get_gravity().y)
 
 	# Get the input direction and handle the movement/deceleration.
