@@ -48,3 +48,6 @@ func look_at_target(direction: Vector3) -> void:
 	var adjusted_direction = direction
 	adjusted_direction.y = 0.0
 	look_at(global_position+adjusted_direction,Vector3.UP,true)
+
+func  attack() -> void:
+	print("attack")
