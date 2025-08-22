@@ -1,6 +1,9 @@
 extends CharacterBody3D
 
 @onready var camera_pivot: Node3D = $CameraPivot
+@onready var damage_animation_player: AnimationPlayer = $TextureRect/DamageAnimationPlayer
+@onready var game_over_menu: Control = $GameOverMenu
+
 @export var jump_height := 1.0
 @export var fall_multiplier := 2.0
 @export var max_hitpoints := 100
@@ -9,9 +12,12 @@ const SPEED = 5.0
 var mouse_motion := Vector2.ZERO
 var hitpoints:int = max_hitpoints:
 	set(value):
+		if value < hitpoints:
+			damage_animation_player.stop(false)
+			damage_animation_player.play("TakeDamage")
 		hitpoints = value
 		if hitpoints <=0 :
-			get_tree().quit()
+			game_over_menu.game_over()
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
