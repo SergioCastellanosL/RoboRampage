@@ -3,6 +3,7 @@ extends CharacterBody3D
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var damage_animation_player: AnimationPlayer = $TextureRect/DamageAnimationPlayer
 @onready var game_over_menu: Control = $GameOverMenu
+@onready var ammo_handler: AmmoHandler = %AmmoHandler
 
 @export var jump_height := 1.0
 @export var fall_multiplier := 2.0
